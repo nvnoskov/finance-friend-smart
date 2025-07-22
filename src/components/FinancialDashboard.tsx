@@ -55,22 +55,22 @@ export const FinancialDashboard = () => {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-foreground">Financial Dashboard</h1>
-            <p className="text-muted-foreground">Track your finances and achieve your goals</p>
+            <h1 className="text-3xl font-bold text-foreground">Panel Financiero</h1>
+            <p className="text-muted-foreground">Controla tus finanzas y alcanza tus metas</p>
           </div>
           <Button className="bg-gradient-financial hover:opacity-90 transition-smooth">
             <Plus className="mr-2 h-4 w-4" />
-            Add Transaction
+            Añadir Transacción
           </Button>
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full grid-cols-5">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="expenses">Expenses</TabsTrigger>
-            <TabsTrigger value="budget">Budget</TabsTrigger>
-            <TabsTrigger value="goals">Goals</TabsTrigger>
-            <TabsTrigger value="analytics">Analytics</TabsTrigger>
+            <TabsTrigger value="overview">Resumen</TabsTrigger>
+            <TabsTrigger value="expenses">Gastos</TabsTrigger>
+            <TabsTrigger value="budget">Presupuesto</TabsTrigger>
+            <TabsTrigger value="goals">Metas</TabsTrigger>
+            <TabsTrigger value="analytics">Análisis</TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="space-y-6">
@@ -78,7 +78,7 @@ export const FinancialDashboard = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <Card className="bg-gradient-card shadow-card border-0">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Total Balance</CardTitle>
+                  <CardTitle className="text-sm font-medium">Balance Total</CardTitle>
                   <DollarSign className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
@@ -94,20 +94,20 @@ export const FinancialDashboard = () => {
 
               <Card className="bg-gradient-card shadow-card border-0">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Monthly Income</CardTitle>
+                  <CardTitle className="text-sm font-medium">Ingresos Mensuales</CardTitle>
                   <TrendingUp className="h-4 w-4 text-income" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold text-income">
                     +${financialData.monthlyIncome.toLocaleString()}
                   </div>
-                  <p className="text-xs text-muted-foreground">This month</p>
+                  <p className="text-xs text-muted-foreground">Este mes</p>
                 </CardContent>
               </Card>
 
               <Card className="bg-gradient-card shadow-card border-0">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Monthly Expenses</CardTitle>
+                  <CardTitle className="text-sm font-medium">Gastos Mensuales</CardTitle>
                   <TrendingDown className="h-4 w-4 text-expense" />
                 </CardHeader>
                 <CardContent>
@@ -115,14 +115,14 @@ export const FinancialDashboard = () => {
                     -${financialData.monthlyExpenses.toLocaleString()}
                   </div>
                   <p className="text-xs text-muted-foreground">
-                    {budgetUtilization.toFixed(1)}% of budget used
+                    {budgetUtilization.toFixed(1)}% del presupuesto usado
                   </p>
                 </CardContent>
               </Card>
 
               <Card className="bg-gradient-card shadow-card border-0">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Savings Rate</CardTitle>
+                  <CardTitle className="text-sm font-medium">Tasa de Ahorro</CardTitle>
                   <PiggyBank className="h-4 w-4 text-savings" />
                 </CardHeader>
                 <CardContent>
@@ -130,7 +130,7 @@ export const FinancialDashboard = () => {
                     {savingsRate.toFixed(1)}%
                   </div>
                   <p className="text-xs text-success">
-                    Above recommended 20%
+                    Por encima del 20% recomendado
                   </p>
                 </CardContent>
               </Card>
@@ -142,7 +142,7 @@ export const FinancialDashboard = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center">
                     <Target className="mr-2 h-5 w-5 text-primary" />
-                    Financial Goals Progress
+                    Progreso de Metas Financieras
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -171,7 +171,7 @@ export const FinancialDashboard = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center">
                     <CreditCard className="mr-2 h-5 w-5 text-primary" />
-                    Recent Transactions
+                    Transacciones Recientes
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -202,13 +202,13 @@ export const FinancialDashboard = () => {
               <CardHeader>
                 <CardTitle className="flex items-center">
                   <AlertTriangle className="mr-2 h-5 w-5 text-warning" />
-                  Emergency Fund Status
+                  Estado del Fondo de Emergencia
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">Progress to Goal</span>
+                    <span className="text-sm font-medium">Progreso hacia la Meta</span>
                     <span className="text-sm text-muted-foreground">
                       ${financialData.emergencyFund.toLocaleString()} / ${financialData.emergencyGoal.toLocaleString()}
                     </span>
@@ -216,10 +216,10 @@ export const FinancialDashboard = () => {
                   <Progress value={emergencyFundProgress} className="h-3" />
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">
-                      {emergencyFundProgress.toFixed(1)}% complete
+                      {emergencyFundProgress.toFixed(1)}% completado
                     </span>
                     <span className="text-muted-foreground">
-                      ${(financialData.emergencyGoal - financialData.emergencyFund).toLocaleString()} remaining
+                      ${(financialData.emergencyGoal - financialData.emergencyFund).toLocaleString()} restante
                     </span>
                   </div>
                 </div>
